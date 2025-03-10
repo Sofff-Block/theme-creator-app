@@ -5,26 +5,26 @@
 // Render color cards for each color in the theme.
 
 import "./App.css";
-import ColorCard from "./components/ColorCard";
+import Theme from "./components/Theme.jsx";
 import { themes } from "./db.js";
 
 function App() {
-  const theme = themes[0];
   return (
     <>
       <header className="header">
         <h1>Theme Creator</h1>
       </header>
-      <main className="main-container">
-        <h2 className="theme-title">{theme.name}</h2>
-        <ul className="color-list">
-          {theme.colors.map((color) => (
-            <li key={color.role}>
-              <ColorCard color={color} />
-            </li>
-          ))}
-        </ul>
-      </main>
+      <div className="preview-container">
+        <main className="main-container">
+          <ul className="theme-list">
+            {themes.map((theme) => (
+              <li key={theme.id}>
+                <Theme name={theme.name} colors={theme.colors} />
+              </li>
+            ))}
+          </ul>
+        </main>
+      </div>
     </>
   );
 }
